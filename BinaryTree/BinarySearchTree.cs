@@ -9,9 +9,9 @@ namespace BinaryTree
     public class BinarySearchTree<K> where K : IComparable
     {
         
-        public BinarySearchTreeNode<K> Root;               
+        public BinarySearchTreeNode<K> Root;                
 
-        public void AddNode(K Key)                             
+        public void AddNode(K Key)                              
         {
             Root = AddRecursively(Root, Key);               
         }
@@ -21,8 +21,9 @@ namespace BinaryTree
 
 
 
-        private BinarySearchTreeNode<K> AddRecursively(BinarySearchTreeNode<K> Current, K Key)   
+        private BinarySearchTreeNode<K> AddRecursively(BinarySearchTreeNode<K> Current, K Key)  
         {
+           
             
             if (Current == null)                                    
                 return new BinarySearchTreeNode<K>(Key);
@@ -48,10 +49,23 @@ namespace BinaryTree
 
         private int getSizeRecursively(BinarySearchTreeNode<K> Current)
         {
-            
             return Current == null ? 0 : 1 + this.getSizeRecursively(Current.Left)
                                            + this.getSizeRecursively(Current.Right);
         }
-
+        public bool SearchKey(K key)
+        {
+            return SearchRecursively(Root, key);
+        }
+        private bool SearchRecursively(BinarySearchTreeNode<K> Current, K key)
+        {
+            
+            if (Current == null)
+                return false;
+             
+            if (Current.Key.CompareTo(key) == 0)
+                return true;
+            else
+                return SearchRecursively(Current.Left, key) || SearchRecursively(Current.Right, key);
+        }
     }
 }
