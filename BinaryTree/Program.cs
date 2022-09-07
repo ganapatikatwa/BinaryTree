@@ -13,6 +13,10 @@ namespace BinaryTree
             BinaryTree.AddNode(30);
             BinaryTree.AddNode(70);
             BinaryTree.AddNode(22);
+            BinaryTree.AddNode(63);
+           
+            int Size = BinaryTree.GetSize();
+            Console.WriteLine(Size);
         }
     }
 }
